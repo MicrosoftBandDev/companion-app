@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-ios;net6.0-android;net6.0-maccatalyst;net6.0-windows</TargetFrameworks>
+		<OutputType>Library</OutputType>
+		<FileAlignment>512</FileAlignment>
+		<LangVersion>latest</LangVersion>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+
+		<ProjectGuid>{7AC5B21C-E909-4D66-A9BC-F92525720E49}</ProjectGuid>
+		<AssemblyName>Microsoft.Band</AssemblyName>
+		<RootNamespace>Microsoft.Band</RootNamespace>
+		<ApplicationVersion>1.4.0.0</ApplicationVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Google.Protobuf" Version="3.19.1" />
+	</ItemGroup>
+
+</Project>

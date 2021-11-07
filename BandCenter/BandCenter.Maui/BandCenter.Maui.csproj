@@ -29,11 +29,7 @@
 
     <ItemGroup>
         <!-- App Icon -->
-        <MauiImage
-            Include="Resources\appicon.svg"
-            ForegroundFile="Resources\appiconfg.svg"
-            IsAppIcon="true"
-            Color="#512BD4" />
+        <MauiImage Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" IsAppIcon="true" Color="#512BD4" />
 
         <!-- Splash Screen -->
         <MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" />
@@ -52,6 +48,10 @@
         <PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="1.0.0-experimental1" />
         <PackageReference Include="Microsoft.WindowsAppSDK.InteractiveExperiences" Version="1.0.0-experimental1" NoWarn="NU1701" />
         <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.26-experimental1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Microsoft.Band\Microsoft.Band.csproj" />
     </ItemGroup>
 
     <PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">

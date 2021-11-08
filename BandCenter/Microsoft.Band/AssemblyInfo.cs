@@ -84,3 +84,5 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("Microsoft.Health.App.Core.UnitTest")]
 [assembly: AssemblyFileVersion("1.3.20517.1")]
 [assembly: AssemblyVersion("1.3.20517.1")]
+
+[assembly: InternalsVisibleTo("Microsoft.Band.Maui")]

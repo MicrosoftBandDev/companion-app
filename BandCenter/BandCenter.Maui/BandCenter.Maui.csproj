@@ -52,6 +52,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Microsoft.Band\Microsoft.Band.csproj" />
+      <ProjectReference Include="..\Microsoft.Band.Maui\Microsoft.Band.Maui.csproj" />
     </ItemGroup>
 
     <PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">

@@ -5,6 +5,7 @@
 // Assembly location: .\netcore451\Microsoft.Band.Store.dll
 
 using Microsoft.Band.Tiles;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -70,15 +71,16 @@ namespace Microsoft.Band
         private static async Task<bool> RequestConsentAsync(string prompt, CancellationToken token)
         {
             token.ThrowIfCancellationRequested();
-            MessageDialog messageDialog = new(prompt, BandResources.ConsentDialogTitle);
-            messageDialog.Commands.Add(new UICommand(BandResources.UICommandLabelYes, null, 0U));
-            messageDialog.Commands.Add(new UICommand(BandResources.UICommandLabelNo, null, 1U));
-            messageDialog.DefaultCommandIndex = 0U;
-            messageDialog.CancelCommandIndex = 1U;
-            return Convert.ToUInt32((await messageDialog.ShowAsync()).Id) == 0U;
+            using TaskDialog dialog = new()
+            {
+                Caption = BandResources.ConsentDialogTitle,
+                Text = prompt,
+                StandardButtons = TaskDialogStandardButtons.Yes | TaskDialogStandardButtons.No,
+            };
+            return dialog.Show() == TaskDialogResult.Yes;
         }
 
         private static string CreateSensorAccessConsentSettingsKey(Type sensorType)
-            => string.Format("BandSensorAccessConcent-{0}", new object[] { sensorType });
+            => "BandSensorAccessConcent-" + sensorType.ToString();
     }
 }

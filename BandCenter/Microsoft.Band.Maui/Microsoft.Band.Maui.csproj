@@ -17,4 +17,9 @@
 		<ProjectReference Include="..\Microsoft.Band\Microsoft.Band.csproj" />
 	</ItemGroup>
 
+	<!-- Windows -->
+	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
+		<PackageReference Include="WindowsAPICodePack-Core" Version="1.1.2" />
+	</ItemGroup>
+
 </Project>

@@ -7,6 +7,11 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
+#if DEBUG
+using Logger = System.Diagnostics.Debug;
+#else
+using Logger = System.Console;
+#endif
 
 namespace Microsoft.Band
 {
@@ -18,18 +23,28 @@ namespace Microsoft.Band
 
         public void Log(ProviderLogLevel level, string message, params object[] args)
         {
+            Logger.WriteLine($"[{level}]  {GetCallerName()}" + Environment.NewLine +
+                FormatAndIndent(message, args));
         }
 
         public void LogException(ProviderLogLevel level, Exception e)
         {
+            Logger.WriteLine($"[{level}]  Exception thrown from {GetCallerName()}:" + Environment.NewLine +
+                FormatAndIndent(e.ToString()));
         }
 
         public void LogWebException(ProviderLogLevel level, WebException e)
         {
+            Logger.WriteLine($"[{level}]  Web exception thrown from {GetCallerName()}:" + Environment.NewLine +
+                $"{FormatAndIndent(e.ToString())}");
         }
 
         public void LogException(ProviderLogLevel level, Exception e, string message, params object[] args)
         {
+            Logger.WriteLine($"[{level}]  {GetCallerName()}" + Environment.NewLine +
+                $"{FormatAndIndent(message, args)}" + Environment.NewLine +
+                $"Exception:" + Environment.NewLine +
+                $"{FormatAndIndent(e.ToString())}");
         }
 
         public void PerfStart(string eventName)
@@ -42,6 +57,17 @@ namespace Microsoft.Band
 
         public void TelemetryEvent(string eventName, IDictionary<string, string> properties, IDictionary<string, double> metrics)
         {
+        }
+
+        private static string GetCallerName()
+        {
+            return (new System.Diagnostics.StackTrace()).GetFrame(2).GetMethod().Name;
+        }
+
+        private static string FormatAndIndent(string message, params object[] args)
+        {
+            string output = "\t" + string.Format(message, args);
+            return output.Replace(Environment.NewLine, Environment.NewLine + "\t");
         }
     }
 }

@@ -35,6 +35,10 @@ namespace Microsoft.Band
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         public Task<Guid> GetApplicationIdAsync(CancellationToken token)
         {
+            bool useDebugId = false;
+#if DEBUG
+            useDebugId = true;
+#endif
             Guid result;
             try
             {
@@ -45,7 +49,7 @@ namespace Microsoft.Band
                 IBuffer binary = CryptographicBuffer.ConvertStringToBinary(Package.Current.Id.Name, 0);
                 result = new Guid(CryptographicBuffer.EncodeToHexString(HashAlgorithmProvider.OpenAlgorithm(HashAlgorithmNames.Md5).HashData(binary)));
             }
-            if (result == Guid.Empty)
+            if (result == Guid.Empty || useDebugId)
                 result = new Guid(Encoding.UTF8.GetBytes("#DEBUG-ONLY-GUID"));
             return Task.FromResult(result);
         }

@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Diagnostics;
-using Microsoft.Band.Tiles;
+﻿using Microsoft.Band.Tiles;
 using Microsoft.Maui.Controls;
 using SixLabors.Fonts;
 using SixLabors.ImageSharp;

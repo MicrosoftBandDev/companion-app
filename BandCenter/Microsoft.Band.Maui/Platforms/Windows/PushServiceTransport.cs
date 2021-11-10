@@ -22,7 +22,16 @@ namespace Microsoft.Band.Windows
         {
             foreach (BluetoothDeviceInfo connectedDevice in BluetoothTransport.GetConnectedDevices(new Guid("{C742E1A2-6320-5ABC-9643-D206C677E580}"), loggerProvider))
             {
-                if (connectedDevice.Peer.Name == associatedBand.Peer.Name)
+                string connectedId = connectedDevice.Peer.Id;
+                int idx = connectedId.LastIndexOf('#');
+                if (idx >= 0)
+                    connectedId = connectedId[..idx];
+                string associatedId = connectedDevice.Peer.Id;
+                idx = associatedId.LastIndexOf('#');
+                if (idx >= 0)
+                    associatedId = associatedId[..idx];
+
+                if (connectedId == associatedId)
                 {
                     Connect(RfcommDeviceService.FromIdAsync(connectedDevice.Peer.Id).AsTask().Result, maxConnectAttempts);
                     CargoStream.ReadTimeout = int.MaxValue;

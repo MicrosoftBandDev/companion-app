@@ -210,7 +210,7 @@ namespace Microsoft.Band
             CheckIfDisconnected();
             if (runningFirmwareApp != FirmwareApp.App)
             {
-                BandIOException bandIoException = new(string.Format(BandResources.DeviceInNonAppMode, new[] { runningFirmwareApp }));
+                BandIOException bandIoException = new(string.Format(BandResources.DeviceInNonAppMode, runningFirmwareApp));
                 loggerProvider.LogException(ProviderLogLevel.Error, bandIoException);
                 throw bandIoException;
             }
@@ -523,16 +523,16 @@ namespace Microsoft.Band
             if (image == null)
                 throw new ArgumentNullException(nameof(image));
             if (image.Width != BandTypeConstants.MeTileWidth)
-                throw new ArgumentException(string.Format(BandResources.MeTileImageWidthError, new[] { BandTypeConstants.MeTileWidth }));
+                throw new ArgumentException(string.Format(BandResources.MeTileImageWidthError, BandTypeConstants.MeTileWidth));
             switch (BandTypeConstants.BandType)
             {
                 case BandType.Cargo:
                     if (image.Height != BandTypeConstants.Cargo.MeTileHeight)
-                        throw new ArgumentException(string.Format(BandResources.MeTileHeightHeightError, new[] { BandTypeConstants.Cargo.MeTileHeight }));
+                        throw new ArgumentException(string.Format(BandResources.MeTileHeightHeightError, BandTypeConstants.Cargo.MeTileHeight));
                     break;
                 case BandType.Envoy:
                     if (image.Height != BandTypeConstants.Cargo.MeTileHeight && image.Height != BandTypeConstants.Envoy.MeTileHeight)
-                        throw new ArgumentException(string.Format(BandResources.MeTileHeightHeightError, new[] { BandTypeConstants.Envoy.MeTileHeight }));
+                        throw new ArgumentException(string.Format(BandResources.MeTileHeightHeightError, BandTypeConstants.Envoy.MeTileHeight));
                     break;
                 default:
                     throw new InvalidOperationException("Internal error: BandClass unrecognized");
@@ -822,7 +822,7 @@ namespace Microsoft.Band
         {
             if (statusHandling == CommandStatusHandling.DoNotCheck || (int)status.Status == (int)DeviceStatusCodeUtils.Success)
                 return;
-            string message = string.Format(BandResources.CommandStatusError, new[] { status.Status });
+            string message = string.Format(BandResources.CommandStatusError, status.Status);
             switch (statusHandling)
             {
                 case CommandStatusHandling.ThrowAnyNonZero:
@@ -1447,7 +1447,7 @@ namespace Microsoft.Band
         public Task<bool> SetPagesAsync(Guid tileId, CancellationToken token, IEnumerable<PageData> pages)
         {
             if (tileId == Guid.Empty)
-                throw new ArgumentException(string.Format(BandResources.SetPagesEmptyGuid, new[] { tileId }));
+                throw new ArgumentException(string.Format(BandResources.SetPagesEmptyGuid, tileId));
             PageData[] pageList = pages != null ? pages.ToArray() : throw new ArgumentNullException(nameof(pages));
             if (pageList.Length == 0)
                 throw new ArgumentException(string.Format(BandResources.GenericCountZero, new[] { nameof(pages) }));
@@ -1496,7 +1496,7 @@ namespace Microsoft.Band
         public Task<bool> RemovePagesAsync(Guid tileId, CancellationToken token)
         {
             if (tileId == Guid.Empty)
-                throw new ArgumentException(string.Format(BandResources.RemovePagesEmptyGuid, new[] { tileId }));
+                throw new ArgumentException(string.Format(BandResources.RemovePagesEmptyGuid, tileId));
             if (KnownTiles.AllTileGuids.Contains(tileId))
                 return Task.FromResult(false);
             CheckIfDisposed();
@@ -1532,7 +1532,7 @@ namespace Microsoft.Band
         public Task<bool> RemoveTileAsync(Guid tileId, CancellationToken token)
         {
             if (tileId == Guid.Empty)
-                throw new ArgumentException(string.Format(BandResources.RemoveTileEmptyTileId, new[] { tileId }));
+                throw new ArgumentException(string.Format(BandResources.RemoveTileEmptyTileId, tileId));
             if (KnownTiles.AllTileGuids.Contains(tileId))
                 return Task.FromResult(false);
             CheckIfDisposed();
@@ -1550,7 +1550,7 @@ namespace Microsoft.Band
                 RemoveTile(tileId, installedTilesNoIcons);
                 token.ThrowIfCancellationRequested();
                 if (GetInstalledTilesNoIcons().Any(func ??= (tile) => tile.AppID == tileId))
-                    throw new BandException(string.Format(CultureInfo.CurrentCulture, BandResources.RemoveTileFailed, new[] { tileId }));
+                    throw new BandException(string.Format(CultureInfo.CurrentCulture, BandResources.RemoveTileFailed, tileId));
                 return true;
             }, token);
         }

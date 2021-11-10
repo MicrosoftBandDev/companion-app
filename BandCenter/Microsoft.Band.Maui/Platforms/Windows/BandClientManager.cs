@@ -46,7 +46,7 @@ namespace Microsoft.Band
                 client = new BandStoreClient(bluetoothDeviceInfo, deviceTransport, pushServiceTransport, loggerProvider, StoreApplicationPlatformProvider.Current);
                 client.InitializeCachedProperties();
                 client.CheckFirmwareSdkBit(FirmwareSdkCheckPlatform.Windows, 0);
-                loggerProvider.Log(ProviderLogLevel.Info, "Created BandClient(IBandInfo bandinfo)", Array.Empty<object>());
+                loggerProvider.Log(ProviderLogLevel.Info, "Created BandClient(IBandInfo bandinfo)");
                 loggerProvider = null;
             }
             catch

@@ -39,7 +39,7 @@ namespace BandCenter.Maui
                 bandClient.SensorManager.HeartRate.ReadingChanged += (sender, args) =>
                 {
                     // do work when the reading changes (i.e., update a UI element)
-                    Dispatcher.BeginInvokeOnMainThread(() =>
+                    Dispatcher.Dispatch(() =>
                     {
                         CounterLabel.Text = $"Current heart rate: {args.SensorReading.HeartRate}";
 
@@ -48,9 +48,10 @@ namespace BandCenter.Maui
                 };
 
                 // start the Heartrate sensor
-                //await bandClient.SensorManager.HeartRate.StartReadingsAsync();
-                //await System.Threading.Tasks.Task.Delay(new TimeSpan(0, 0, 30));
-                //await bandClient.SensorManager.HeartRate.StopReadingsAsync();
+                await bandClient.SensorManager.HeartRate.StartReadingsAsync();
+                await System.Threading.Tasks.Task.Delay(new TimeSpan(0, 0, 30));
+                await bandClient.SensorManager.HeartRate.StopReadingsAsync();
+                return;
 
                 Guid tileId = Guid.Parse("870671A2-E128-4EB6-9F42-D75FA9290B40");
                 Guid tilePageId = Guid.Parse("870671A2-E128-4EB6-9F42-D75FA9290B41");

@@ -1094,13 +1094,13 @@ namespace Microsoft.Band
                 w.WriteByte((byte)type);
                 w.WriteBool32(false);
             }
-            loggerProvider.Log(ProviderLogLevel.Info, "Remote subscribing to {0} sensor.", (object)type.ToString());
+            loggerProvider.Log(ProviderLogLevel.Info, $"Remote subscribing to {type} sensor.");
             ProtocolWriteWithArgs(DeviceCommands.CargoRemoteSubscriptionSubscribe, 5, writeArgBuf);
         }
 
         protected virtual void ExecuteSensorUnsubscribeCommand(SubscriptionType type)
         {
-            loggerProvider.Log(ProviderLogLevel.Info, "Remote unsubscribing to {0} sensor.", (object)type.ToString());
+            loggerProvider.Log(ProviderLogLevel.Info, $"Remote unsubscribing to {type} sensor.");
             void writeArgBuf(ICargoWriter w) => w.WriteByte((byte)type);
             ProtocolWriteWithArgs(DeviceCommands.CargoRemoteSubscriptionUnsubscribe, 1, writeArgBuf);
         }
@@ -1206,14 +1206,14 @@ namespace Microsoft.Band
                     BandSensorSampleDeserializer sampleDeserializer = TryGetBandSensorSampleDeserializer(sampleHeader);
                     if (sampleDeserializer == null)
                     {
-                        loggerProvider.Log(ProviderLogLevel.Warning, "Unsupported subscription type {0} received.", (object)sampleHeader.SubscriptionType);
+                        loggerProvider.Log(ProviderLogLevel.Warning, $"Unsupported subscription type {sampleHeader.SubscriptionType} received.");
                     }
                     else
                     {
                         num = sampleDeserializer.GetSerializeByteCount(sampleHeader);
                         if (sampleHeader.SampleSize % num != 0)
                         {
-                            loggerProvider.Log(ProviderLogLevel.Error, "Subscription type {0} sample array size is not multiple of sample size.", (object)sampleHeader.SubscriptionType);
+                            loggerProvider.Log(ProviderLogLevel.Error, $"Subscription type {sampleHeader.SubscriptionType} sample array size is not multiple of sample size.");
                             num = 0;
                         }
                     }
@@ -1237,7 +1237,7 @@ namespace Microsoft.Band
                     }
                     return RemoteSubscriptionSampleHeader.GetSerializedByteCount() + sampleHeader.SampleSize;
                 default:
-                    loggerProvider.Log(ProviderLogLevel.Info, "QueueSensorSubscriptionPayload(): Type: {0}, Missed Samples: {1}, Sample Size: {2}", sampleHeader.SubscriptionType, sampleHeader.NumMissedSamples, sampleHeader.SampleSize);
+                    loggerProvider.Log(ProviderLogLevel.Info, $"QueueSensorSubscriptionPayload(): Type: {sampleHeader.SubscriptionType}, Missed Samples: {sampleHeader.NumMissedSamples}, Sample Size: {sampleHeader.SampleSize}");
                     goto case SubscriptionType.Accelerometer32MS;
             }
         }
@@ -1252,7 +1252,7 @@ namespace Microsoft.Band
             BandTileEventBase bandTileEventBase = BandTileEventBase.DeserializeFromBand(reader, DateTimeOffset.Now, out byte[] tileFriendlyName);
             if (bandTileEventBase != null)
             {
-                loggerProvider.Log(ProviderLogLevel.Info, "QueueTileEventPayload(): Type: {0}, TileId: {1}", bandTileEventBase.GetType().Name, bandTileEventBase.TileId);
+                loggerProvider.Log(ProviderLogLevel.Info, $"QueueTileEventPayload(): Type: {bandTileEventBase.GetType().Name}, TileId: {bandTileEventBase.TileId}");
                 if (!tileIdOwnership.TryGetValue(bandTileEventBase.TileId, out bool flag))
                 {
                     Guid? currentAppId = this.currentAppId;
@@ -1706,12 +1706,12 @@ namespace Microsoft.Band
             if (iconsAlreadyRegistered)
             {
                 commandId = DeviceCommands.CargoDynamicAppRegisterAppIcons;
-                loggerProvider.Log(ProviderLogLevel.Verbose, "Invoking DynamicAppUpdateStrappIcons for strapp: {0}", (object)friendlyName);
+                loggerProvider.Log(ProviderLogLevel.Verbose, $"Invoking DynamicAppUpdateStrappIcons for strapp: {friendlyName}");
             }
             else
             {
                 commandId = DeviceCommands.CargoDynamicAppRegisterApp;
-                loggerProvider.Log(ProviderLogLevel.Verbose, "Invoking DynamicAppRegisterStrapp for strapp: {0}", (object)friendlyName);
+                loggerProvider.Log(ProviderLogLevel.Verbose, $"Invoking DynamicAppRegisterStrapp for strapp: {friendlyName}");
             }
             try
             {
@@ -1749,7 +1749,7 @@ namespace Microsoft.Band
 
         protected void UnregisterTileIcons(Guid guid)
         {
-            loggerProvider.Log(ProviderLogLevel.Verbose, "Invoking DynamicAppRemoveStrapp for strapp: {0}", (object)guid.ToString());
+            loggerProvider.Log(ProviderLogLevel.Verbose, $"Invoking DynamicAppRemoveStrapp for strapp: {guid}");
             void writeData(ICargoWriter w) => w.WriteGuid(guid);
             ProtocolWriteWithData(DeviceCommands.CargoDynamicAppRemoveApp, 16, writeData, 60000);
         }
@@ -1807,13 +1807,13 @@ namespace Microsoft.Band
 
         protected void SetMainIconIndex(Guid tileId, uint iconIndex)
         {
-            loggerProvider.Log(ProviderLogLevel.Verbose, "Invoking DynamicAppSetTileIconIndex for tile: {0}", (object)tileId);
+            loggerProvider.Log(ProviderLogLevel.Verbose, $"Invoking DynamicAppSetTileIconIndex for tile: {tileId}");
             SetTileIconIndex(tileId, DeviceCommands.CargoDynamicAppSetAppTileIndex, iconIndex);
         }
 
         protected void SetBadgeIconIndex(Guid tileId, uint iconIndex)
         {
-            loggerProvider.Log(ProviderLogLevel.Verbose, "Invoking DynamicAppSetBadgeIconIndex for tile: {0}", (object)tileId);
+            loggerProvider.Log(ProviderLogLevel.Verbose, $"Invoking DynamicAppSetBadgeIconIndex for tile: {tileId}");
             SetTileIconIndex(tileId, DeviceCommands.CargoDynamicAppSetAppBadgeTileIndex, iconIndex);
         }
 
@@ -1821,11 +1821,11 @@ namespace Microsoft.Band
         {
             if (BandTypeConstants.BandType == BandType.Envoy)
             {
-                loggerProvider.Log(ProviderLogLevel.Verbose, "Invoking DynamicAppSetNotificationIconIndex for tile: {0}", (object)tileId);
+                loggerProvider.Log(ProviderLogLevel.Verbose, $"Invoking DynamicAppSetNotificationIconIndex for tile: {tileId}");
                 SetTileIconIndex(tileId, DeviceCommands.CargoDynamicAppSetAppNotificationTileIndex, iconIndex);
             }
             else
-                loggerProvider.Log(ProviderLogLevel.Verbose, "Silently ignoring SetNotificationIconIndex() for Cargo device, tile: {0}", (object)tileId);
+                loggerProvider.Log(ProviderLogLevel.Verbose, $"Silently ignoring SetNotificationIconIndex() for Cargo device, tile: {tileId}");
         }
 
         private void SetTileIconIndex(Guid guid, ushort iconIndexCommandId, uint iconIndex)

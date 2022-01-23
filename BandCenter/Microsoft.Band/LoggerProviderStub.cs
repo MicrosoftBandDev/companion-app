@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Runtime.CompilerServices;
 #if DEBUG
 using Logger = System.Diagnostics.Debug;
 #else
@@ -21,27 +22,27 @@ namespace Microsoft.Band
 
         public static LoggerProviderStub Default => _default;
 
-        public void Log(ProviderLogLevel level, string message, params object[] args)
+        public void Log(ProviderLogLevel level, string message, object[] args, [CallerMemberName] string callerName = null)
         {
-            Logger.WriteLine($"[{level}]  {GetCallerName()}" + Environment.NewLine +
+            Logger.WriteLine($"[{level}]  {callerName}" + Environment.NewLine +
                 FormatAndIndent(message, args));
         }
 
-        public void LogException(ProviderLogLevel level, Exception e)
+        public void LogException(ProviderLogLevel level, Exception e, [CallerMemberName] string callerName = null)
         {
-            Logger.WriteLine($"[{level}]  Exception thrown from {GetCallerName()}:" + Environment.NewLine +
+            Logger.WriteLine($"[{level}]  Exception thrown from {callerName}:" + Environment.NewLine +
                 FormatAndIndent(e.ToString()));
         }
 
-        public void LogWebException(ProviderLogLevel level, WebException e)
+        public void LogWebException(ProviderLogLevel level, WebException e, [CallerMemberName] string callerName = null)
         {
-            Logger.WriteLine($"[{level}]  Web exception thrown from {GetCallerName()}:" + Environment.NewLine +
+            Logger.WriteLine($"[{level}]  Web exception thrown from {callerName}:" + Environment.NewLine +
                 $"{FormatAndIndent(e.ToString())}");
         }
 
-        public void LogException(ProviderLogLevel level, Exception e, string message, params object[] args)
+        public void LogException(ProviderLogLevel level, Exception e, string message, object[] args = null, [CallerMemberName] string callerName = null)
         {
-            Logger.WriteLine($"[{level}]  {GetCallerName()}" + Environment.NewLine +
+            Logger.WriteLine($"[{level}]  {callerName}" + Environment.NewLine +
                 $"{FormatAndIndent(message, args)}" + Environment.NewLine +
                 $"Exception:" + Environment.NewLine +
                 $"{FormatAndIndent(e.ToString())}");
@@ -57,11 +58,6 @@ namespace Microsoft.Band
 
         public void TelemetryEvent(string eventName, IDictionary<string, string> properties, IDictionary<string, double> metrics)
         {
-        }
-
-        private static string GetCallerName()
-        {
-            return (new System.Diagnostics.StackTrace()).GetFrame(2).GetMethod().Name;
         }
 
         private static string FormatAndIndent(string message, params object[] args)

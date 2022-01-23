@@ -7,18 +7,19 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Runtime.CompilerServices;
 
 namespace Microsoft.Band
 {
     internal interface ILoggerProvider
     {
-        void Log(ProviderLogLevel level, string message, params object[] args);
+        void Log(ProviderLogLevel level, string message, object[] args = null, [CallerMemberName] string callerName = null);
 
-        void LogException(ProviderLogLevel level, Exception e);
+        void LogException(ProviderLogLevel level, Exception e, [CallerMemberName] string callerName = null);
 
-        void LogWebException(ProviderLogLevel level, WebException e);
+        void LogWebException(ProviderLogLevel level, WebException e, [CallerMemberName] string callerName = null);
 
-        void LogException(ProviderLogLevel level, Exception e, string message, params object[] args);
+        void LogException(ProviderLogLevel level, Exception e, string message, object[] args, [CallerMemberName] string callerName = null);
 
         void PerfStart(string eventName);
 

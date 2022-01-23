@@ -52,12 +52,12 @@ namespace Microsoft.Band.Windows
             {
                 throw new BandIOException("Error getting list of Bluetooth peers.", ex);
             }
-            BluetoothDeviceInfo[] bluetoothDeviceInfoArray = new BluetoothDeviceInfo[((IReadOnlyCollection<DeviceInformation>)results).Count];
-            loggerProvider.Log(ProviderLogLevel.Info, "Bluetooth peers found: {0}", (object)((IReadOnlyCollection<DeviceInformation>)results).Count);
-            for (int index = 0; index < ((IReadOnlyCollection<DeviceInformation>)results).Count; ++index)
+            BluetoothDeviceInfo[] bluetoothDeviceInfoArray = new BluetoothDeviceInfo[results.Count];
+            loggerProvider.Log(ProviderLogLevel.Info, $"Bluetooth peers found: {results.Count}");
+            for (int index = 0; index < results.Count; ++index)
             {
                 DeviceInformation peer = ((IReadOnlyList<DeviceInformation>)results)[index];
-                loggerProvider.Log(ProviderLogLevel.Info, "  Peer: Name: {0}, Id: {1}", peer.Name, peer.Id);
+                loggerProvider.Log(ProviderLogLevel.Info, $"  Peer: Name: {peer.Name}, Id: {peer.Id}");
                 bluetoothDeviceInfoArray[index] = new BluetoothDeviceInfo(peer);
             }
             return bluetoothDeviceInfoArray;

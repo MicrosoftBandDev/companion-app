@@ -232,7 +232,7 @@ namespace Microsoft.Band
                     throw new ArgumentOutOfRangeException(nameof(argBufSize));
             }
             DeviceCommands.LookupCommand(commandId, out Facility category, out TX isTXCommand, out byte index);
-            loggerProvider.Log(ProviderLogLevel.Info, "Device Command: Facility: {0}, TX: {1}, Index: 0x{2:X2}, Arg Buf Size: {3}, Data Size: {4}", category, isTXCommand, index, argBufSize, dataStageSize);
+            loggerProvider.Log(ProviderLogLevel.Info, $"Device Command: Facility: {category}, TX: {isTXCommand}, Index: 0x{index:X2}, Arg Buf Size: {argBufSize}, Data Size: {dataStageSize}");
             try
             {
                 if (prependPacketSize)

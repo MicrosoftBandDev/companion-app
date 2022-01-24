@@ -73,7 +73,7 @@ namespace Microsoft.Band.Windows
                 return;
             if (maxConnectAttempts == 0)
                 throw new ArgumentOutOfRangeException(nameof(maxConnectAttempts));
-            loggerProvider.Log(ProviderLogLevel.Info, "Socket.ConnectAsync()... Max Attempts: {0}, ConnectionServiceName: {1}", maxConnectAttempts, service.ConnectionServiceName);
+            loggerProvider.Log(ProviderLogLevel.Info, $"Socket.ConnectAsync()... Max Attempts: {maxConnectAttempts}, ConnectionServiceName: {service.ConnectionServiceName}");
             ushort num = 0;
             Exception innerException = null;
             Stopwatch stopwatch1 = Stopwatch.StartNew();
@@ -85,17 +85,17 @@ namespace Microsoft.Band.Windows
                 socket = new StreamSocket();
                 try
                 {
-                    loggerProvider.Log(ProviderLogLevel.Info, "Socket.ConnectAsync()... Attempt: {0}/{1}", num, maxConnectAttempts);
+                    loggerProvider.Log(ProviderLogLevel.Info, $"Socket.ConnectAsync()... Attempt: {num}/{maxConnectAttempts}");
                     socket.ConnectAsync(service.ConnectionHostName, service.ConnectionServiceName).AsTask().Wait();
                     isConnected = true;
-                    loggerProvider.Log(ProviderLogLevel.Info, "Socket.ConnectAsync() succeeded: Attempt: {0}/{1}, Elapsed: {2}", num, maxConnectAttempts, stopwatch2.Elapsed);
+                    loggerProvider.Log(ProviderLogLevel.Info, $"Socket.ConnectAsync() succeeded: Attempt: {num}/{maxConnectAttempts}, Elapsed: {stopwatch2.Elapsed}");
                 }
                 catch (Exception ex)
                 {
                     socket.Dispose();
                     if (innerException == null)
                         innerException = ex;
-                    loggerProvider.LogException(ProviderLogLevel.Warning, ex, "Socket.ConnectAsync() failed: Attempt: {0}/{1}, Elapsed: {2}", num, maxConnectAttempts, stopwatch2.Elapsed);
+                    loggerProvider.LogException(ProviderLogLevel.Warning, ex, $"Socket.ConnectAsync() failed: Attempt: {num}/{maxConnectAttempts}, Elapsed: {stopwatch2.Elapsed}");
                 }
             }
             while (!isConnected && num < maxConnectAttempts);
@@ -103,11 +103,11 @@ namespace Microsoft.Band.Windows
             {
                 cargoStream = new StreamSocketStream(socket);
                 cargoReader = new CargoStreamReader(cargoStream, BufferServer.Pool_8192);
-                loggerProvider.Log(ProviderLogLevel.Info, "Socket.ConnectAsync() succeeded: Elapsed: {0}, ConnectionServiceName: {1}", stopwatch1.Elapsed, service.ConnectionServiceName);
+                loggerProvider.Log(ProviderLogLevel.Info, $"Socket.ConnectAsync() succeeded: Elapsed: {stopwatch1.Elapsed}, ConnectionServiceName: {service.ConnectionServiceName}");
             }
             else
             {
-                loggerProvider.Log(ProviderLogLevel.Error, "Socket.ConnectAsync() failed: Attempts: {0}, Elapsed: {1}, ConnectionServiceName: {2}", num, stopwatch1.Elapsed, service.ConnectionServiceName);
+                loggerProvider.Log(ProviderLogLevel.Error, $"Socket.ConnectAsync() failed: Attempts: {num}, Elapsed: {stopwatch1.Elapsed}, ConnectionServiceName: {service.ConnectionServiceName}");
                 throw new BandIOException(BandResources.ConnectionAttemptFailed, innerException);
             }
         }

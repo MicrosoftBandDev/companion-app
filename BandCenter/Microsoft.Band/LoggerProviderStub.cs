@@ -22,7 +22,7 @@ namespace Microsoft.Band
 
         public static LoggerProviderStub Default => _default;
 
-        public void Log(ProviderLogLevel level, string message, object[] args, [CallerMemberName] string callerName = null)
+        public void Log(ProviderLogLevel level, string message, object[] args = null, [CallerMemberName] string callerName = null)
         {
             Logger.WriteLine($"[{level}]  {callerName}" + Environment.NewLine +
                 FormatAndIndent(message, args));

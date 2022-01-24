@@ -219,7 +219,7 @@ namespace Microsoft.Band.Windows
                         num += ProcessTileEventPayload(reader);
                     break;
                 default:
-                    loggerProvider.Log(ProviderLogLevel.Warning, "Unsupported push service type {0} received.", (object)servicePacketHeader.Type.ToString());
+                    loggerProvider.Log(ProviderLogLevel.Warning, $"Unsupported push service type {servicePacketHeader.Type} received.");
                     pushServiceTransport.CargoReader.ReadExactAndDiscard(servicePacketHeader.Length);
                     break;
             }

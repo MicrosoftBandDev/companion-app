@@ -1,7 +1,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:BandCenter.Maui.Controls"
              x:Class="BandCenter.Maui.MainPage"
              BackgroundColor="{DynamicResource SecondaryColor}">
+
+    <ContentPage.Resources>
+
+    </ContentPage.Resources>
 
     <ScrollView>
         <VerticalStackLayout>
@@ -20,14 +25,8 @@
                 HorizontalOptions="Center"
                 Margin="30" />
 
-            <Border Stroke="Black" StrokeThickness="1" BackgroundColor="{DynamicResource PrimaryColor}"
-                    HeightRequest="140" Padding="12,8">
-                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*" VerticalOptions="End">
-                    <Label Text="95% Complete" FontSize="16" GridLayout.Row="0" GridLayout.ColumnSpan="2"
-                           Style="{DynamicResource LightLabel}"/>
-                    <Label Text="14,250" FontSize="48" GridLayout.Row="1" GridLayout.ColumnSpan="2" Style="{DynamicResource LightLabel}"/>
-                </Grid>
-            </Border>
+            <controls:ActivityTile MetricMarkup="14,250 &lt;s&gt;steps&lt;/s&gt;"
+                                   Subtitle="95% complete"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

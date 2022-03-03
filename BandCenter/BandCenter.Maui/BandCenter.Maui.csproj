@@ -52,6 +52,15 @@
       <ProjectReference Include="..\Microsoft.Band.Maui\Microsoft.Band.Maui.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <MauiXaml Update="Controls\ActivityTile.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Controls\MetricMarkupPresenter.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+    </ItemGroup>
+
     <PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
         <OutputType>WinExe</OutputType>
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>

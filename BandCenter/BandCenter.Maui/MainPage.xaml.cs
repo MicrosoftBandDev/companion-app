@@ -4,7 +4,7 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Essentials;
 
 #if DEBUG
-using System.Diagnostics;
+using Console = System.Diagnostics.Debug;
 #endif
 
 namespace BandCenter.Maui
@@ -22,10 +22,15 @@ namespace BandCenter.Maui
         {
 #if WINDOWS
             IBandInfo[] pairedBands = await BandClientManager.Instance.GetBandsAsync();
+            if (pairedBands == null || pairedBands.Length == 0)
+                return;
+
+            IBandInfo band = pairedBands[0];
+            // TODO: Make sure band is available
 
             try
             {
-                using IBandClient bandClient = await BandClientManager.Instance.ConnectAsync(pairedBands[0]);
+                using IBandClient bandClient = await BandClientManager.Instance.ConnectAsync(band);
                 var version = await bandClient.GetFirmwareVersionAsync();
 
                 // check current user heart rate consent
@@ -104,9 +109,7 @@ namespace BandCenter.Maui
             catch (BandException ex)
             {
                 // Handle a Band connection exception
-#if DEBUG
-                Debug.WriteLine(ex);
-#endif
+                Console.WriteLine(ex);
             }
 #endif
         }

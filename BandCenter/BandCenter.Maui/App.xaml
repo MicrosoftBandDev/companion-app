@@ -10,19 +10,32 @@
             <Color x:Key="PrimaryColor">#005AA1</Color>
             <Color x:Key="SecondaryColor">White</Color>
 
+            <OnPlatform x:Key="SystemFontRegular" x:TypeArguments="x:String">
+                <On Platform="Default">OpenSansRegular</On>
+                <On Platform="UWP">Segoe UI</On>
+                <On Platform="WPF">Segoe UI</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="SystemFontLight" x:TypeArguments="x:String">
+                <On Platform="Default">OpenSansLight</On>
+                <On Platform="UWP">Segoe UI Light </On>
+                <On Platform="WPF">Segoe UI Light</On>
+            </OnPlatform>
+
             <Style x:Key="DefaultLabel" TargetType="Label">
                 <Setter Property="TextColor" Value="{DynamicResource SecondaryColor}" />
-                <Setter Property="FontFamily" Value="{OnPlatform Default='OpenSansRegular', UWP='Segoe UI', WPF='Segoe UI'}" />
+                <Setter Property="FontFamily" Value="{DynamicResource SystemFontRegular}" />
             </Style>
             <Style TargetType="Label" BaseResourceKey="DefaultLabel"/>
 
             <Style x:Key="LightLabel" TargetType="Label" BaseResourceKey="DefaultLabel">
-                <Setter Property="FontFamily" Value="{OnPlatform Default='OpenSansLight', UWP='Segoe UI Light', WPF='Segoe UI Light'}" />
+                <Setter Property="TextColor" Value="#AFFFFFFF" />
+                <Setter Property="FontFamily" Value="{DynamicResource SystemFontLight}" />
             </Style>
 
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="{DynamicResource SecondaryColor}" />
-                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="FontFamily" Value="{DynamicResource SystemFontRegular}" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
                 <Setter Property="Padding" Value="14,10" />
             </Style>

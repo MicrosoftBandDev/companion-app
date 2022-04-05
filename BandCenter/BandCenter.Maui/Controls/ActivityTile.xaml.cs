@@ -21,11 +21,22 @@ namespace BandCenter.Maui.Controls
         }
 
         public static readonly BindableProperty MetricMarkupProperty = BindableProperty.Create(
-            nameof(MetricMarkup), typeof(string), typeof(ActivityTile), string.Empty);
+            nameof(MetricMarkup), typeof(string), typeof(ActivityTile), string.Empty, propertyChanged: MetricMarkup_PropertyChanged);
         public string MetricMarkup
         {
             get => (string)GetValue(MetricMarkupProperty);
             set => SetValue(MetricMarkupProperty, value);
+        }
+
+        private static void MetricMarkup_PropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            // For some reason bindings just aren't working properly. ActivityTile gets the prop
+            // changed event, but the MetricMarkupPresenter never gets the new value.
+
+            if (bindable is not ActivityTile tile)
+                return;
+
+            tile.MarkupPresenter.MetricMarkup = newValue?.ToString();
         }
     }
 }

@@ -24,7 +24,7 @@
 
 	<!-- Windows -->
 	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<PackageReference Include="WindowsAPICodePack-Core" Version="1.1.2" />
+		<PackageReference Include="Microsoft-WindowsAPICodePack-Core" Version="1.1.4" />
 	</ItemGroup>
 
 </Project>

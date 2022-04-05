@@ -19,6 +19,7 @@ namespace Microsoft.Band
     internal class LoggerProviderStub : ILoggerProvider
     {
         public static readonly LoggerProviderStub _default = new();
+        private static readonly object[] _emptyArray = new object[0];
 
         public static LoggerProviderStub Default => _default;
 
@@ -62,7 +63,17 @@ namespace Microsoft.Band
 
         private static string FormatAndIndent(string message, params object[] args)
         {
-            string output = "\t" + string.Format(message, args);
+            string output = "\t";
+
+            if (args != null)
+            {
+                output += string.Format(message, args);
+            }
+            else
+            {
+                output += message;
+            }
+
             return output.Replace(Environment.NewLine, Environment.NewLine + "\t");
         }
     }

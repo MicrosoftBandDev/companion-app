@@ -29,13 +29,13 @@
                     </ResourceDictionary>
                 </Grid.Resources>
 
-                <Label Text="{Binding Subtitle, Mode=OneWay}" FontSize="16" GridLayout.ColumnSpan="2"
+                <Label Text="{Binding Subtitle, Mode=OneWay}" FontSize="16" Grid.ColumnSpan="2"
                        Style="{DynamicResource LightLabel}"/>
                 <!--
                     NOTE: It looks odd, but MetricMarkup has to be set after the style properties,
                     otherwise the styles will be null when the markup is parsed 
                 -->
-                <controls:MetricMarkupPresenter GridLayout.Row="1" GridLayout.ColumnSpan="2"
+                <controls:MetricMarkupPresenter Grid.Row="1" Grid.ColumnSpan="2"
                                                 NoneTextStyle="{DynamicResource NoneLabel}"
                                                 SmallTextStyle="{DynamicResource SmallLabel}"
                                                 ItalicTextStyle="{DynamicResource ItalicLabel}"
@@ -44,7 +44,7 @@
 
                 <Image Source="D:\Pictures\Icons\win10-trainers-48.png"
                        WidthRequest="48" HeightRequest="{Binding Path=WidthRequest, Source={RelativeSource Mode=Self}}"
-                       GridLayout.Row="1" GridLayout.Column="1" VerticalOptions="End" HorizontalOptions="EndAndExpand"/>
+                       Grid.Row="1" Grid.Column="1" VerticalOptions="End" HorizontalOptions="EndAndExpand"/>
             </Grid>
         </Border>
     </ContentView.Content>

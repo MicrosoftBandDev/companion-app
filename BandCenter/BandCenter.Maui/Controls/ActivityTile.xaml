@@ -29,8 +29,8 @@
                     </ResourceDictionary>
                 </Grid.Resources>
 
-                <Label Text="{Binding Subtitle, Mode=OneWay}" FontSize="16" Grid.ColumnSpan="2"
-                       Style="{DynamicResource LightLabel}"/>
+                <Label x:Name="SubtitleLabel" FontSize="16" Grid.ColumnSpan="2"
+                       Style="{DynamicResource LightLabel}" Margin="0,0,0,-10"/>
                 
                 <controls:MetricMarkupPresenter x:Name="MarkupPresenter" Grid.Row="1" Grid.ColumnSpan="2"
                                                 NoneTextStyle="{DynamicResource NoneLabel}"

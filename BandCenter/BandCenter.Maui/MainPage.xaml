@@ -26,7 +26,7 @@
                 Margin="30" />
 
             <controls:ActivityTile MetricMarkup="14,250 &lt;s&gt;steps&lt;/s&gt;"
-                                   Subtitle="95% complete"/>
+                                   Subtitle="95% Complete"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

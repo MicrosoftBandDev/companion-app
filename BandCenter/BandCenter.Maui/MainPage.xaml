@@ -27,6 +27,9 @@
 
             <controls:ActivityTile MetricMarkup="14,250 &lt;s&gt;steps&lt;/s&gt;"
                                    Subtitle="95% Complete"/>
+
+            <controls:ActivityTile MetricMarkup="6&lt;s&gt;h&lt;/s&gt; 32&lt;s&gt;m&lt;/s&gt;"
+                                   Subtitle="Mon 10/19, Actual sleep"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -67,10 +67,10 @@ namespace BandCenter.Maui.Controls
 
         private static void MetricMarkup_PropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if (oldValue == newValue || newValue is not string markup || string.IsNullOrEmpty(markup))
+            if (oldValue == newValue || newValue is not string markup || bindable is not MetricMarkupPresenter presenter)
                 return;
 
-            UpdateMetricMarkup((MetricMarkupPresenter)bindable, markup);
+            UpdateMetricMarkup(presenter, markup);
         }
 
         private enum Format
@@ -83,15 +83,15 @@ namespace BandCenter.Maui.Controls
             Span label = new()
             {
                 Text = segment,
-            };
-            label.Style = format switch
-            {
-                Format.Small => SmallTextStyle,
-                Format.Italic => ItalicTextStyle,
-                Format.Bold => BoldTextStyle,
+                Style = format switch
+                {
+                    Format.Small => SmallTextStyle,
+                    Format.Italic => ItalicTextStyle,
+                    Format.Bold => BoldTextStyle,
 
-                Format.None or
-                _ => NoneTextStyle
+                    Format.None or
+                    _ => NoneTextStyle
+                }
             };
             TextContent.FormattedText.Spans.Add(label);
         }
@@ -106,7 +106,10 @@ namespace BandCenter.Maui.Controls
         {
             presenter.TextContent.FormattedText.Spans.Clear();
 
-            var matches = Regex.Matches(markup, @"<([nsib])>(.*)<\/(?:\1)>");
+            if (string.IsNullOrEmpty(markup))
+                return;
+
+            var matches = Regex.Matches(markup, @"<([nsib])>(.*?)<\/(?:\1)>");
             if (matches.Count > 0)
             {
                 //IList<(int idx, int len)> specialRanges = matches.OrderBy(m => m.Index).Select(m => (m.Index, m.Length)).ToList();

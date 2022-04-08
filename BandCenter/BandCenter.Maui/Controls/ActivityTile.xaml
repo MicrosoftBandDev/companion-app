@@ -38,7 +38,7 @@
                                                 ItalicTextStyle="{DynamicResource ItalicLabel}"
                                                 BoldTextStyle="{DynamicResource BoldLabel}" />
 
-                <Image Source="D:\Pictures\Icons\win10-trainers-48.png"
+                <Image x:Name="ImageElement"
                        WidthRequest="48" HeightRequest="{Binding Path=WidthRequest, Source={RelativeSource Mode=Self}}"
                        Grid.Row="1" Grid.Column="1" VerticalOptions="End" HorizontalOptions="EndAndExpand"/>
             </Grid>

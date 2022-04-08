@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Input;
 using Microsoft.Maui.Controls;
 
@@ -42,6 +43,14 @@ namespace BandCenter.Maui.Controls
             set => SetValue(CommandProperty, value);
         }
 
+        public static readonly BindableProperty IconSourceProperty = BindableProperty.Create(
+            nameof(IconSource), typeof(ImageSource), typeof(ActivityTile), null, propertyChanged: IconSource_PropertyChanged);
+        public ImageSource IconSource
+        {
+            get => (ImageSource)GetValue(IconSourceProperty);
+            set => SetValue(IconSourceProperty, value);
+        }
+
         private static void Subtitle_PropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             // For some reason bindings just aren't working properly. ActivityTile gets the prop
@@ -62,6 +71,17 @@ namespace BandCenter.Maui.Controls
                 return;
 
             tile.MarkupPresenter.MetricMarkup = newValue?.ToString();
+        }
+
+        private static void IconSource_PropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            // For some reason bindings just aren't working properly. ActivityTile gets the prop
+            // changed event, but the Image never gets the new value.
+
+            if (bindable is not ActivityTile tile || newValue is not ImageSource source)
+                return;
+
+            tile.ImageElement.Source = source;
         }
     }
 }

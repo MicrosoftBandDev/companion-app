@@ -10,6 +10,10 @@
             <Color x:Key="PrimaryColor">#005AA1</Color>
             <Color x:Key="SecondaryColor">White</Color>
 
+            <x:Double x:Key="SymbolFontSize">84</x:Double>
+            
+            <x:String x:Key="SymbolFontRegular">ProjectKSymbol</x:String>
+
             <OnPlatform x:Key="SystemFontRegular" x:TypeArguments="x:String">
                 <On Platform="Default">OpenSansRegular</On>
                 <On Platform="UWP">Segoe UI</On>

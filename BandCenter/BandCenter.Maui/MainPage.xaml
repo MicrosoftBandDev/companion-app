@@ -26,11 +26,20 @@
                 Margin="30" />
 
             <controls:ActivityTile MetricMarkup="14,250 &lt;s&gt;steps&lt;/s&gt;"
-                                   Subtitle="95% Complete"
-                                   IconSource="D:\Pictures\Icons\win10-trainers-48.png"/>
+                                   Subtitle="95% Complete">
+                <controls:ActivityTile.IconSource>
+                    <FontImageSource Glyph="&#xE008;" FontFamily="{StaticResource SymbolFontRegular}"
+                                     Size="{StaticResource SymbolFontSize}"/>
+                </controls:ActivityTile.IconSource>
+            </controls:ActivityTile>
 
             <controls:ActivityTile MetricMarkup="6&lt;s&gt;h&lt;/s&gt; 32&lt;s&gt;m&lt;/s&gt;"
-                                   Subtitle="Mon 10/19, Actual sleep"/>
+                                   Subtitle="Mon 10/19, Actual sleep">
+                <controls:ActivityTile.IconSource>
+                    <FontImageSource Glyph="&#xE005;" FontFamily="{StaticResource SymbolFontRegular}"
+                                     Size="{StaticResource SymbolFontSize}"/>
+                </controls:ActivityTile.IconSource>
+            </controls:ActivityTile>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

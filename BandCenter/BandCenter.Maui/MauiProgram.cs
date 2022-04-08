@@ -15,6 +15,7 @@ namespace BandCenter.Maui
 				.ConfigureFonts(fonts =>
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+					fonts.AddFont("ProjectKSymbolRegular.ttf", "ProjectKSymbol");
 				});
 
 			return builder.Build();

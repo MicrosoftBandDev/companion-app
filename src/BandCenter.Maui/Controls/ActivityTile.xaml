@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:BandCenter.Maui.Controls"
+             x:Class="BandCenter.Maui.Controls.ActivityTile">
+
+    <ContentView.Content>
+        <Border Stroke="Black" StrokeThickness="1" BackgroundColor="{DynamicResource PrimaryColor}"
+                    HeightRequest="140" Padding="12,8">
+            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" VerticalOptions="End"
+                  x:DataType="controls:ActivityTile">
+                <Grid.Resources>
+                    <ResourceDictionary>
+                        <Style x:Key="NoneLabel" TargetType="Label" BaseResourceKey="DefaultLabel">
+                            <Setter Property="FontSize" Value="Large" />
+                            <Setter Property="FontFamily" Value="{DynamicResource SystemFontRegular}" />
+                        </Style>
+                        <Style x:Key="SmallLabel" TargetType="Label" BaseResourceKey="DefaultLabel">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                        <Style x:Key="ItalicLabel" TargetType="Label" BaseResourceKey="SmallLabel">
+                            <Setter Property="FontAttributes" Value="Italic" />
+                            <Setter Property="FontFamily" Value="Segoe UI Italic" />
+                        </Style>
+                        <Style x:Key="BoldLabel" TargetType="Label" BaseResourceKey="SmallLabel">
+                            <Setter Property="FontAttributes" Value="Bold" />
+                            <Setter Property="FontFamily" Value="Segoe UI Semibold" />
+                        </Style>
+                    </ResourceDictionary>
+                </Grid.Resources>
+
+                <Label x:Name="SubtitleLabel" FontSize="16" Grid.ColumnSpan="2"
+                       Style="{DynamicResource LightLabel}" Margin="0,0,0,-10"/>
+                
+                <controls:MetricMarkupPresenter x:Name="MarkupPresenter" Grid.Row="1" Grid.ColumnSpan="2"
+                                                NoneTextStyle="{DynamicResource NoneLabel}"
+                                                SmallTextStyle="{DynamicResource SmallLabel}"
+                                                ItalicTextStyle="{DynamicResource ItalicLabel}"
+                                                BoldTextStyle="{DynamicResource BoldLabel}" />
+
+                <Image x:Name="ImageElement"
+                       WidthRequest="48" HeightRequest="{Binding Path=WidthRequest, Source={RelativeSource Mode=Self}}"
+                       Grid.Row="1" Grid.Column="1" VerticalOptions="End" HorizontalOptions="EndAndExpand"/>
+            </Grid>
+        </Border>
+    </ContentView.Content>
+    
+</ContentView>

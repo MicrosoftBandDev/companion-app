@@ -1,0 +1,3 @@
+[submodule "libs/band-sdk"]
+	path = libs/band-sdk
+	url = https://github.com/MicrosoftBandDev/band-sdk.git

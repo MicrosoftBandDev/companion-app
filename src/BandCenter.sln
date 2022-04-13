@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31611.283
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BandCenter.Maui", "BandCenter.Maui\BandCenter.Maui.csproj", "{A52BEAF6-0EA9-4648-8047-7378AA212F51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{F399C21F-8870-45E5-B7CD-40F93500CF31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Band", "..\libs\band-sdk\src\Microsoft.Band\Microsoft.Band.csproj", "{7AC5B21C-E909-4D66-A9BC-F92525720E49}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Band.Maui", "..\libs\band-sdk\src\Microsoft.Band.Maui\Microsoft.Band.Maui.csproj", "{45F1A873-9859-40EC-8900-AFD7A3537D60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A52BEAF6-0EA9-4648-8047-7378AA212F51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A52BEAF6-0EA9-4648-8047-7378AA212F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A52BEAF6-0EA9-4648-8047-7378AA212F51}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A52BEAF6-0EA9-4648-8047-7378AA212F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A52BEAF6-0EA9-4648-8047-7378AA212F51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A52BEAF6-0EA9-4648-8047-7378AA212F51}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7AC5B21C-E909-4D66-A9BC-F92525720E49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC5B21C-E909-4D66-A9BC-F92525720E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC5B21C-E909-4D66-A9BC-F92525720E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC5B21C-E909-4D66-A9BC-F92525720E49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F1A873-9859-40EC-8900-AFD7A3537D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F1A873-9859-40EC-8900-AFD7A3537D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F1A873-9859-40EC-8900-AFD7A3537D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F1A873-9859-40EC-8900-AFD7A3537D60}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7AC5B21C-E909-4D66-A9BC-F92525720E49} = {F399C21F-8870-45E5-B7CD-40F93500CF31}
+		{45F1A873-9859-40EC-8900-AFD7A3537D60} = {F399C21F-8870-45E5-B7CD-40F93500CF31}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+	EndGlobalSection
+EndGlobal

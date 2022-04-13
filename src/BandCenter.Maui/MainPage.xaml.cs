@@ -53,9 +53,18 @@ namespace BandCenter.Maui
                 };
 
                 // start the Heartrate sensor
-                await bandClient.SensorManager.HeartRate.StartReadingsAsync();
-                await System.Threading.Tasks.Task.Delay(new TimeSpan(0, 0, 30));
-                await bandClient.SensorManager.HeartRate.StopReadingsAsync();
+                //await bandClient.SensorManager.HeartRate.StartReadingsAsync();
+                //await System.Threading.Tasks.Task.Delay(new TimeSpan(0, 0, 30));
+                //await bandClient.SensorManager.HeartRate.StopReadingsAsync();
+                //return;
+
+                Guid smsTileId = Guid.Parse("b4edbc35-027b-4d10-a797-1099cd2ad98a");
+                await bandClient.NotificationManager.SendMessageAsync(smsTileId,
+                    "Test Message",
+                    "This isn't a real message",
+                    DateTimeOffset.Now,
+                    Microsoft.Band.Notifications.MessageFlags.ShowDialog,
+                    true);
                 return;
 
                 Guid tileId = Guid.Parse("870671A2-E128-4EB6-9F42-D75FA9290B40");

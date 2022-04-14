@@ -129,7 +129,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\..\..\..\band-sdk\src\Microsoft.Band.Uno\Microsoft.Band.Uno.csproj">
+    <ProjectReference Include="..\..\..\libs\band-sdk\src\Microsoft.Band.Uno\Microsoft.Band.Uno.csproj">
       <Project>{98977187-0556-4ecd-a867-5fe5dafe508b}</Project>
       <Name>Microsoft.Band.Uno</Name>
     </ProjectReference>

@@ -76,7 +76,7 @@ namespace BandCenter.Uno
 
                 Guid tileId = Guid.Parse("870671A2-E128-4EB6-9F42-D75FA9290B40");
                 Guid tilePageId = Guid.Parse("870671A2-E128-4EB6-9F42-D75FA9290B41");
-                Microsoft.Band.Tiles.Pages.PageLayout tilePage = new(new Microsoft.Band.Tiles.Pages.FilledPanel(
+                var tilePage = new Microsoft.Band.Tiles.Pages.PageLayout(new Microsoft.Band.Tiles.Pages.FilledPanel(
                     new Microsoft.Band.Tiles.Pages.TextButton()
                     {
                         ElementId = 0x1

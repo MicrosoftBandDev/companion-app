@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{F399C21F-8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Band", "..\libs\band-sdk\src\Microsoft.Band\Microsoft.Band.csproj", "{7AC5B21C-E909-4D66-A9BC-F92525720E49}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Band.Uno", "..\..\band-sdk\src\Microsoft.Band.Uno\Microsoft.Band.Uno.csproj", "{98977187-0556-4ECD-A867-5FE5DAFE508B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Band.Uno", "..\libs\band-sdk\src\Microsoft.Band.Uno\Microsoft.Band.Uno.csproj", "{98977187-0556-4ECD-A867-5FE5DAFE508B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Uno", "Uno", "{3E4D06C1-560B-4015-80AB-7B2BC13AA769}"
 EndProject

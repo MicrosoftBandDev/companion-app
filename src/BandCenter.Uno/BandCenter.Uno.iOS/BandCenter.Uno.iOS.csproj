@@ -9,6 +9,7 @@
     <RootNamespace>BandCenter.Uno</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>BandCenter.Uno</AssemblyName>
+	  <LangVersion>9</LangVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <ResourcesDirectory>..\BandCenter.Uno.Shared\Strings</ResourcesDirectory>

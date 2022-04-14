@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectGuid>65232eed-0a5a-4b6d-8736-7fa1ffcf2ee9</ProjectGuid>
+    <ProjectGuid>{65232EED-0A5A-4B6D-8736-7FA1FFCF2EE9}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>BandCenter.Uno</RootNamespace>
@@ -170,10 +170,16 @@
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Media" Visible="false" />
-    <Folder Include="Media\AppIcons" Visible="false" />
-    <Folder Include="Media\LaunchImages" Visible="false" />
+    <ProjectReference Include="..\..\..\..\band-sdk\src\Microsoft.Band.Uno\Microsoft.Band.Uno.csproj">
+      <Project>{98977187-0556-4ecd-a867-5fe5dafe508b}</Project>
+      <Name>Microsoft.Band.Uno</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\libs\band-sdk\src\Microsoft.Band\Microsoft.Band.csproj">
+      <Project>{7ac5b21c-e909-4d66-a9bc-f92525720e49}</Project>
+      <Name>Microsoft.Band</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\BandCenter.Uno.Shared\BandCenter.Uno.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

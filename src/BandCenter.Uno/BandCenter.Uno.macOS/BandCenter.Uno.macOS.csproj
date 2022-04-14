@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectGuid>8a1aaecc-43bd-4b2e-8ba6-fc824e71ba22</ProjectGuid>
+    <ProjectGuid>{8A1AAECC-43BD-4B2E-8BA6-FC824E71BA22}</ProjectGuid>
     <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>BandCenter.Uno.macOS</RootNamespace>
@@ -92,11 +92,7 @@
     <ImageAsset Include="Assets.xcassets\unologo.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\unologo.imageset\unoplatform.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\Fonts\" />
-    <Folder Include="Assets.xcassets\unologo.imageset\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
@@ -109,6 +105,16 @@
     <BundleResource Include="Resources\Fonts\uno-fluentui-assets.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\band-sdk\src\Microsoft.Band.Uno\Microsoft.Band.Uno.csproj">
+      <Project>{98977187-0556-4ecd-a867-5fe5dafe508b}</Project>
+      <Name>Microsoft.Band.Uno</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\libs\band-sdk\src\Microsoft.Band\Microsoft.Band.csproj">
+      <Project>{7ac5b21c-e909-4d66-a9bc-f92525720e49}</Project>
+      <Name>Microsoft.Band</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <Target Name="VS16Mac_RemoveSystemMemory" BeforeTargets="ResolveAssemblyReferences">

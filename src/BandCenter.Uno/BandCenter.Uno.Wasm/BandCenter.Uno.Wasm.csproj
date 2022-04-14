@@ -49,5 +49,9 @@
     <PackageReference Include="Uno.Wasm.Bootstrap" Version="3.2.0" />
     <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="3.2.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\band-sdk\src\Microsoft.Band.Uno\Microsoft.Band.Uno.csproj" />
+    <ProjectReference Include="..\..\..\libs\band-sdk\src\Microsoft.Band\Microsoft.Band.csproj" />
+  </ItemGroup>
   <Import Project="..\BandCenter.Uno.Shared\BandCenter.Uno.Shared.projitems" Label="Shared" Condition="Exists('..\BandCenter.Uno.Shared\BandCenter.Uno.Shared.projitems')" />
 </Project>

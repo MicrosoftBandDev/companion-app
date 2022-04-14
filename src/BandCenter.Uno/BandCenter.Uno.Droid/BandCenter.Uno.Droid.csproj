@@ -18,7 +18,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
-	  <LangVersion>9</LangVersion>
+    <LangVersion>9</LangVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseIntermediateDesignerFile>True</AndroidUseIntermediateDesignerFile>
     <ResourcesDirectory>..\BandCenter.Uno.Shared\Strings</ResourcesDirectory>
@@ -100,6 +100,14 @@
     <ProjectReference Include="..\..\..\..\band-sdk\src\Microsoft.Band.Uno\Microsoft.Band.Uno.csproj">
       <Project>{98977187-0556-4ecd-a867-5fe5dafe508b}</Project>
       <Name>Microsoft.Band.Uno</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\libs\band-sdk\src\Admin\Microsoft.Band.Admin.Uno\Microsoft.Band.Admin.Uno.csproj">
+      <Project>{5b28e28b-03ee-4441-953b-f20126d5071c}</Project>
+      <Name>Microsoft.Band.Admin.Uno</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\libs\band-sdk\src\Admin\Microsoft.Band.Admin\Microsoft.Band.Admin.csproj">
+      <Project>{2b8cfaae-9dd7-4fcd-9157-82effdc64307}</Project>
+      <Name>Microsoft.Band.Admin</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\libs\band-sdk\src\Microsoft.Band\Microsoft.Band.csproj">
       <Project>{7ac5b21c-e909-4d66-a9bc-f92525720e49}</Project>

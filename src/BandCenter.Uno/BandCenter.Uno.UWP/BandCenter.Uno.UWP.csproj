@@ -28,7 +28,7 @@
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
-	  <LangVersion>9</LangVersion>
+    <LangVersion>9</LangVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -132,6 +132,14 @@
     <ProjectReference Include="..\..\..\..\band-sdk\src\Microsoft.Band.Uno\Microsoft.Band.Uno.csproj">
       <Project>{98977187-0556-4ecd-a867-5fe5dafe508b}</Project>
       <Name>Microsoft.Band.Uno</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\libs\band-sdk\src\Admin\Microsoft.Band.Admin.Uno\Microsoft.Band.Admin.Uno.csproj">
+      <Project>{5b28e28b-03ee-4441-953b-f20126d5071c}</Project>
+      <Name>Microsoft.Band.Admin.Uno</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\libs\band-sdk\src\Admin\Microsoft.Band.Admin\Microsoft.Band.Admin.csproj">
+      <Project>{2b8cfaae-9dd7-4fcd-9157-82effdc64307}</Project>
+      <Name>Microsoft.Band.Admin</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\libs\band-sdk\src\Microsoft.Band\Microsoft.Band.csproj">
       <Project>{7ac5b21c-e909-4d66-a9bc-f92525720e49}</Project>

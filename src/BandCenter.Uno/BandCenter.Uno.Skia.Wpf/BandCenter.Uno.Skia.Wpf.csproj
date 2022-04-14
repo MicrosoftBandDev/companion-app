@@ -15,6 +15,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\band-sdk\src\Microsoft.Band.Uno\Microsoft.Band.Uno.csproj" />
+    <ProjectReference Include="..\..\..\libs\band-sdk\src\Admin\Microsoft.Band.Admin.Uno\Microsoft.Band.Admin.Uno.csproj" />
+    <ProjectReference Include="..\..\..\libs\band-sdk\src\Admin\Microsoft.Band.Admin\Microsoft.Band.Admin.csproj" />
+    <ProjectReference Include="..\..\..\libs\band-sdk\src\Microsoft.Band.Uno\Microsoft.Band.Uno.csproj" />
     <ProjectReference Include="..\..\..\libs\band-sdk\src\Microsoft.Band\Microsoft.Band.csproj" />
   </ItemGroup>
   <Import Project="..\BandCenter.Uno.Shared\BandCenter.Uno.Shared.projitems" Label="Shared" />

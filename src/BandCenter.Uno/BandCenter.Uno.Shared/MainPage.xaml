@@ -22,9 +22,15 @@
                 <FontIconSource Glyph="&#xE008;" FontSize="32" FontFamily="{ThemeResource KSymbolFontFamily}"/>
             </controls:ActivityTile.Icon>
         </controls:ActivityTile>
+        <controls:ActivityTile x:Name="HeartRateTile" Subtitle="Heart rate"
+                               MetricMarkup="[not recording]">
+            <controls:ActivityTile.Icon>
+                <FontIconSource Glyph="&#xE006;" FontSize="32" FontFamily="{ThemeResource KSymbolFontFamily}"/>
+            </controls:ActivityTile.Icon>
+        </controls:ActivityTile>
         
         <Button Click="Button_Click" HorizontalAlignment="Center">
-            <TextBlock x:Name="CounterLabel" Text="Hello, world!" Margin="20" FontSize="30" />
+            <TextBlock x:Name="CounterLabel" Text="Start recording" Margin="20" FontSize="30" />
         </Button>
     </StackPanel>
 

@@ -56,9 +56,9 @@ namespace BandCenter.Uno
                 bandClient.SensorManager.HeartRate.ReadingChanged += (sender, args) =>
                 {
                     // do work when the reading changes (i.e., update a UI element)
-                    Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
+                    _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
                     {
-                        CounterLabel.Text = $"Current heart rate: {args.SensorReading.HeartRate}";
+                        HeartRateTile.MetricMarkup = $"{args.SensorReading.HeartRate} <s>bpm</s>";
                     });
                 };
 

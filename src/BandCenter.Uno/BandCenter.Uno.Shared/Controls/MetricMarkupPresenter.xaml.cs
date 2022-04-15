@@ -125,9 +125,6 @@ namespace BandCenter.Uno.Controls
                 // No special markup
                 presenter.CommitMarkupSegment(markup, Format.None);
             }
-
-            // Ugly hack to make sure the Label updates
-            //presenter.TextContent.FormattedText = presenter.TextContent.FormattedText;
         }
     }
 }

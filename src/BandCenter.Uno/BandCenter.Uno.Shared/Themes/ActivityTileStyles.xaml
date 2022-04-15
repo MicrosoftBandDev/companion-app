@@ -1,0 +1,46 @@
+﻿<ResourceDictionary
+    x:Class="BandCenter.Uno.Themes.ActivityTileStyles"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:BandCenter.Uno.Controls">
+
+    <Style x:Key="DefaultActivityTileStyle" TargetType="controls:ActivityTile">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Background" Value="{ThemeResource SystemAccentColorDark2}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:ActivityTile">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}"
+                            Height="140" Padding="12,8">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="SubtitleLabel" FontSize="16" Grid.ColumnSpan="2"
+                                       VerticalAlignment="Bottom" Text="{TemplateBinding Subtitle}"
+                                       Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" Margin="0,0,0,-8"/>
+
+                            <controls:MetricMarkupPresenter x:Name="MarkupPresenter" Grid.Row="1" Grid.ColumnSpan="2"
+                                                            MetricMarkup="{TemplateBinding MetricMarkup}"/>
+
+                            <IconSourceElement IconSource="{TemplateBinding Icon}"
+                                               Grid.Row="1" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="controls:ActivityTile" BasedOn="{StaticResource DefaultActivityTileStyle}"/>
+
+</ResourceDictionary>

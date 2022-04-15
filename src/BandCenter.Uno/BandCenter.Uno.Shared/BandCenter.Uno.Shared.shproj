@@ -12,9 +12,12 @@
   <Import Project="BandCenter.Uno.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
   <ItemGroup>
+    <_Globbed_Compile Remove="Controls\ActivityTile.cs" />
     <_Globbed_Compile Remove="Controls\MetricMarkupPresenter.xaml.cs" />
+    <_Globbed_Compile Remove="Themes\ActivityTileStyles.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbled_Page Remove="Controls\ActivityTile.xaml" />
     <_Globbled_Page Remove="Controls\MetricMarkupPresenter.xaml" />
   </ItemGroup>
 </Project>

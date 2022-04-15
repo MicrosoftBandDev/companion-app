@@ -153,6 +153,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\Fonts\ProjectKSymbolRegular.ttf" />
     <None Include="BandCenter.Uno.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

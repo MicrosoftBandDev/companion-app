@@ -11,13 +11,18 @@
 
     <StackPanel Spacing="2">
         <controls:ActivityTile Subtitle="Mon 10/19, Actual sleep"
-                               MetricMarkup="6&lt;s&gt;h&lt;/s&gt; 32&lt;s&gt;m&lt;/s&gt;"/>
+                               MetricMarkup="6&lt;s&gt;h&lt;/s&gt; 32&lt;s&gt;m&lt;/s&gt;">
+            <controls:ActivityTile.Icon>
+                <FontIconSource Glyph="&#xE005;" FontSize="32" FontFamily="{ThemeResource KSymbolFontFamily}"/>
+            </controls:ActivityTile.Icon>
+        </controls:ActivityTile>
         <controls:ActivityTile Subtitle="92% Complete"
                                MetricMarkup="11,470&lt;s&gt; steps&lt;/s&gt;">
             <controls:ActivityTile.Icon>
-                <FontIconSource Glyph="&#xEB51;" FontSize="32"/>
+                <FontIconSource Glyph="&#xE008;" FontSize="32" FontFamily="{ThemeResource KSymbolFontFamily}"/>
             </controls:ActivityTile.Icon>
         </controls:ActivityTile>
+        
         <Button Click="Button_Click" HorizontalAlignment="Center">
             <TextBlock x:Name="CounterLabel" Text="Hello, world!" Margin="20" FontSize="30" />
         </Button>

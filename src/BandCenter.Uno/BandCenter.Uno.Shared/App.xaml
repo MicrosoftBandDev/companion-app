@@ -12,7 +12,10 @@
                 <!-- Add resource dictionaries here -->
                 <ResourceDictionary Source="/Themes/ActivityTileStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            
             <!-- Add resources here -->
+            <FontFamily x:Key="KSymbolFontFamily">/Assets/Fonts/ProjectKSymbolRegular.ttf#ProjectKSymbol</FontFamily>
+            
         </ResourceDictionary>
     </Application.Resources>
 

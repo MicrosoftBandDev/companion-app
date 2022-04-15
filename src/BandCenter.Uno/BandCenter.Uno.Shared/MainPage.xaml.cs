@@ -1,8 +1,8 @@
-﻿using Microsoft.Band;
+﻿using BandCenter.Uno.Controls;
+using Microsoft.Band;
 using Microsoft.Band.Admin.Phone;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -28,10 +28,11 @@ namespace BandCenter.Uno
     {
         public MainPage()
         {
+            Loaded += MainPage_Loaded;
             this.InitializeComponent();
         }
 
-        private async void Button_Click(object s, RoutedEventArgs e)
+        private async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             IBandInfo[] pairedBands = await BandClientManager.Instance.GetBandsAsync();
             if (pairedBands == null || pairedBands.Length == 0)
@@ -44,6 +45,19 @@ namespace BandCenter.Uno
             {
                 using var bandClient = await BandAdminClientManager.Instance.ConnectAsync(band);
                 var version = await bandClient.GetFirmwareVersionAsync();
+
+                var lastRun = await bandClient.GetLastRunStatisticsAsync();
+                RunTile.Subtitle = $"{lastRun.EndTime:ddd M/dd}";
+                RunTile.MetricMarkup = $"{lastRun.Distance / (1609.344*100):##0.0}<s>mi</s>";
+
+                var lastSleep = await bandClient.GetLastSleepStatisticsAsync();
+                var timeAsleep = TimeSpan.FromMilliseconds(lastSleep.TimeAsleep);
+                SleepTile.Subtitle = $"{lastSleep.EndTime:ddd M/dd}, Actual sleep";
+                SleepTile.MetricMarkup = $"{timeAsleep.Hours}<s>h</s> {timeAsleep.Minutes}<s>m</s>";
+
+                var lastWorkout = await bandClient.GetLastWorkoutStatisticsAsync();
+                WorkoutTile.Subtitle = $"{lastWorkout.EndTime:ddd M/dd}, Calories burned";
+                WorkoutTile.MetricMarkup = $"{lastWorkout.Calories:N0}<s>cals</s>";
 
                 // check current user heart rate consent
                 if (bandClient.SensorManager.HeartRate.GetCurrentUserConsent() != UserConsent.Granted)
@@ -93,7 +107,7 @@ namespace BandCenter.Uno
             catch (BandException ex)
             {
                 // Handle a Band connection exception
-                Debug.WriteLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex);
             }
         }
     }

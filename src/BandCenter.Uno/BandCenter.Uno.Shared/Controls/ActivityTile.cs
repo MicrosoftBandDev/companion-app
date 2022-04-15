@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace BandCenter.Uno.Controls
 {
-    public sealed class ActivityTile : Control
+    public sealed partial class ActivityTile : Control
     {
         public ActivityTile()
         {

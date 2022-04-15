@@ -5,13 +5,15 @@
     xmlns:local="using:BandCenter.Uno"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:BandCenter.Uno.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <StackPanel VerticalAlignment="Center">
+        <controls:MetricMarkupPresenter MetricMarkup="6&lt;s&gt;h&lt;/s&gt; 32&lt;s&gt;m&lt;/s&gt;"/>
         <Button Click="Button_Click" HorizontalAlignment="Center">
             <TextBlock x:Name="CounterLabel" Text="Hello, world!" Margin="20" FontSize="30" />
         </Button>
-    </Grid>
+    </StackPanel>
 
 </Page>
